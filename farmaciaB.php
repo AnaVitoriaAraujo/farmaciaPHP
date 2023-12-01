@@ -8,7 +8,16 @@
     <title>Cadastro Farmacia B</title>
 </head>
 <body>
-    <?php include 'cadastro.php'; ?>
+    <?php include 'cadastro.php';
+    
+    require_once('DAO/Conexao.php');
+    
+    use POO\FarmaciaPHP\DAO\Conexao;
+    
+     
+    
+    ?>
+    
     <form method="POST">
         <img id="img" name="img" src="Umbrella1.png">
         <h1>Farmácia B</h1>
@@ -53,13 +62,38 @@
 
         <button id="button"> Cadastrar 
         <?php
-            session_start();
-            //Passe o Dado para o construtor
-            $_SESSION['nome']          = $_POST['tNome'];
-            $_SESSION['RG']            = $_POST['tRG'];
-            $_SESSION['telefone']      = $_POST['tTelefone'];
-            $_SESSION['listPlano']     = $_POST['listPlano'];
-            $_SESSION['listFarm']      = $_POST['listFarm'];
+        class Inserir{
+
+            public function Insert(
+            Conexao $conexao,
+             string $info,
+             string $nome,
+             int $RG,
+             string $telefone,
+             string $listPlano,
+             string $listFarm)
+             {
+    
+                try{
+                        $conn = $conexao->Conectar();
+                        $sql ="insert into $info(nome,RG, telefone, listPlano, listFarm) values('$nome','$POST_[$RG]','$POST_[$telefone]','$POST_[$listPlano]','$POST_[$listFarm]')";
+                        $result = mysqli_query($conn, $sql);
+                        
+                        if($result){
+                            return "<br><br>Inserido com sucesso";
+    
+                        }else{
+                            return "<br><br> Não Inserido";
+                        }
+    
+                        mysqli_close($conn);// fechando a conexao com o bd
+                }catch(Exept $erro){
+                    echo $erro;
+                }
+             }//fim do insert
+        }//fim da classe  
+
+        Insert($conexao, "info", $_POST['nome'], $_POST['RG'], $_POST['telefone'], $_POST['listPlano'], $_['listFarm']);
         ?>
         </button>
 

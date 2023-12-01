@@ -10,7 +10,7 @@
 <body>
 
     <?php
-          require_once('Modelo/cadastro.php');//requisitando o uso do arquivo pessoa
+          require_once('Modelo/Info.php');//requisitando o uso do arquivo pessoa
 
           require_once('DAO/Conexao.php');
       
@@ -22,13 +22,15 @@
       
           // require_once('DAO/Excluir.php');
       
-          use POO\FarmaciaPHP\Modelo\cadastro; //acessar e usar todos os metodos desse aquivo
+          use POO\FarmaciaPHP\Modelo\Info; //acessar e usar todos os metodos desse aquivo
           use POO\FarmaciaPHP\DAO\Conexao;
           use POO\FarmaciaPHP\DAO\Inserir;
           use POO\FarmaciaPHP\DAO\Consultar;
        //   use POO\ProjetoBDPhp\DAO\Atualizar;
       //  use POO\ProjetoBDPhp\DAO\Excluir;
     ?>
+
+    
     <form method="POST">
         <h1>Acesso de Adm</h1>
     
@@ -40,13 +42,18 @@
         <input type="text" name="tSenha" id="tSenha"/>
         <br><br>
 
-        <button> Cadastrar
+        <button> Entrar
             <?php 
                 if(('tUser' == 'usuario') && ('tSenha' == 'admin')){
                     
                 }else{
-                    echo "Senha Incorreta realize o processo novamente";
-                }
+                    echo "<br><br>nome:".$dados["nome"].
+                    "<br>RG:".$dados["RG"].
+                    "<br>Telefone".$dados["telefone"].
+                    "<br>lisPlano".$dados["listPlano"].
+                    "<br>listFarm:".$dados["listFarm"];
+                }//fim do enquanto
+                
             ?>
         </button>
 
@@ -54,7 +61,7 @@
 
     <?php
 
-        $pessoa = new cadastro("dfgdfhg","4634646","1198989","Avenida Senador Vergueiro","allansobral");
+        $Info = new Info("dfgdfhg","88888","1198989","Avenida Senador Vergueiro","allansobral");
             
         //Banco de dados
 
@@ -62,7 +69,7 @@
 
          $consultar = new Consultar();
          //Comentario somente para nao exacutar|$consultar->ConsultarIndividual($conexao, "farmacia", "123457")
-         $consultar->ConsultarTudo($conexao, "cadastro");
+         $consultar->ConsultarTudo($conexao, "Info");
     ?>
     </form>
 

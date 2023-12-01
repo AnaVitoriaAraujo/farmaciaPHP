@@ -1,7 +1,7 @@
 <?php
 namespace POO\FarmaciaPHP\modelo;
 
-class farmacia{
+class Info{
     public string $nome;
     public int $RG;
     public string $telefone;

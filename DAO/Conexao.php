@@ -6,7 +6,7 @@
             try{
                 $conn = mysqli_connect('localhost', 'root','','Farmacia');
                 if($conn){
-                    echo "Conectado com sucesso";
+                    echo "\n\nConectado com o banco de dados";
                     return $conn;
                 }
             }catch(Except $erro){
