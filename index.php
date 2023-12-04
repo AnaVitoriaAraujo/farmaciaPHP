@@ -16,8 +16,6 @@
         <button> <a href="farmaciaC.php"> Farmácia C </a></button>
         <button> <a href="farmaciaD.php"> Farmácia D </a></button>
         <button> <a href="telaADM.php"> Adm </a></button>
-        <button> <a href="Conexao.php"></a>Consultar</button>
-        <button><a href="Inserir.php"></a>Inserir</button>
     </form>
 </body>
 </html>

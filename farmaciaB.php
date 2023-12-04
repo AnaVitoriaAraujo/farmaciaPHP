@@ -11,11 +11,11 @@
     <?php include 'cadastro.php';
     
     require_once('DAO/Conexao.php');
+    require_once('DAO/Inserir.php');
     
     use POO\FarmaciaPHP\DAO\Conexao;
-    
-     
-    
+    use POO\FarmaciaPHP\DAO\Inserir;
+
     ?>
     
     <form method="POST">
@@ -62,42 +62,11 @@
 
         <button id="button"> Cadastrar 
         <?php
-        class Inserir{
-
-            public function Insert(
-            Conexao $conexao,
-             string $info,
-             string $nome,
-             int $RG,
-             string $telefone,
-             string $listPlano,
-             string $listFarm)
-             {
-    
-                try{
-                        $conn = $conexao->Conectar();
-                        $sql ="insert into $info(nome,RG, telefone, listPlano, listFarm) values('$nome','$POST_[$RG]','$POST_[$telefone]','$POST_[$listPlano]','$POST_[$listFarm]')";
-                        $result = mysqli_query($conn, $sql);
-                        
-                        if($result){
-                            return "<br><br>Inserido com sucesso";
-    
-                        }else{
-                            return "<br><br> Não Inserido";
-                        }
-    
-                        mysqli_close($conn);// fechando a conexao com o bd
-                }catch(Exept $erro){
-                    echo $erro;
-                }
-             }//fim do insert
-        }//fim da classe  
-
-        Insert($conexao, "info", $_POST['nome'], $_POST['RG'], $_POST['telefone'], $_POST['listPlano'], $_['listFarm']);
+            $conexao = new Conexao();
+            $inserir = new Inserir();
+            $inserir->Insert($conexao, "info", $_POST['tNome'], $_POST['tRG'], $_POST['tTelefone'], $_POST['listPlano'], $_POST['listFarm']); 
         ?>
-        </button>
 
-        <br><br>
         <button id="Voltar"> <a href="index.php"> Voltar </a></button>
     </form>
 </body>

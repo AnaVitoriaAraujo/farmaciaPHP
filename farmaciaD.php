@@ -8,7 +8,15 @@
     <title>Cadastro Farmacia D</title>
 </head>
 <body>
-    <?php include 'cadastro.php'; ?>
+    <?php include 'cadastro.php';
+    
+    require_once('DAO/Conexao.php');
+    require_once('DAO/Inserir.php');
+    
+    use POO\FarmaciaPHP\DAO\Conexao;
+    use POO\FarmaciaPHP\DAO\Inserir;
+
+    ?>
     <form method="POST">
         <img id="img" name="img" src="Umbrella1.png">
         <h1>Farmácia D</h1>
@@ -53,13 +61,9 @@
 
         <button id="button"> Cadastrar 
         <?php
-            session_start();
-            //Passe o Dado para o construtor
-            $_SESSION['nome']          = $_POST['tNome'];
-            $_SESSION['RG']            = $_POST['tRG'];
-            $_SESSION['telefone']      = $_POST['tTelefone'];
-            $_SESSION['listPlano']     = $_POST['listPlano'];
-            $_SESSION['listFarm']      = $_POST['listFarm'];
+            $conexao = new Conexao();
+            $inserir = new Inserir();
+            $inserir->Insert($conexao, "info", $_POST['tNome'], $_POST['tRG'], $_POST['tTelefone'], $_POST['listPlano'], $_POST['listFarm']);
         ?>
         </button>
 

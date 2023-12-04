@@ -13,7 +13,7 @@
         {
             $this->setNome($nome);
             $this->setRG($RG);
-            $this->setEndereco($telefone);
+            $this->setTelefone($telefone);
             $this->setPlano($listPlano);
             $this->setFarm($listFarm);
         }//Fim do Construtor

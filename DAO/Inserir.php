@@ -7,20 +7,21 @@
     class Inserir{
 
         public function Insert(
-        Conexao $conexao,
-         string $nomeTabela,
-         string $nome,
-         int $RG,
-         string $telefone,
+         Conexao $conexao,
+         string $info,
+         string $tNome,
+         int $tRG,
+         string $tTelefone,
          string $listPlano,
-         string $listFarm)
+         string $listFarm
+        )
+        
          {
 
             try{
                     $conn = $conexao->Conectar();
-                    $sql ="insert into $nomeTabela( nome,RG, telefone, listPlano, listFarm)values('$nome','$RG','$telefone','$listPlano','$listFarm')";
+                    $sql ="insert into $info(nome,RG, telefone, listPlano, listFarm) values('$tNome','$tRG','$tTelefone','$listPlano','$listFarm')";
                     $result = mysqli_query($conn, $sql);
-                    
                     if($result){
                         return "<br><br>Inserido com sucesso";
 
@@ -33,5 +34,5 @@
                 echo $erro;
             }
          }//fim do insert
-    }//fim da classe
+    }//fim da classe  
 ?>

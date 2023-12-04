@@ -12,7 +12,6 @@
             }catch(Except $erro){
                 echo $erro;
             }
-
         }//fim do metodo
     }//fim da classex
 ?>
